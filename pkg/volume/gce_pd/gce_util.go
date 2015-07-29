@@ -322,11 +322,11 @@ func (mounter *gceSafeFormatAndMount) Mount(source string, target string, fstype
 	}
 	args = append(args, options...)
 	args = append(args, source, target)
-	glog.V(5).Infof("exec-ing: /usr/share/google/safe_format_and_mount %v", args)
-	cmd := mounter.runner.Command("/usr/share/google/safe_format_and_mount", args...)
+	glog.V(5).Infof("exec-ing: /usr/share/oem/google/safe_format_and_mount %v", args)
+	cmd := mounter.runner.Command("/usr/share/oem/google/safe_format_and_mount", args...)
 	dataOut, err := cmd.CombinedOutput()
 	if err != nil {
-		glog.V(5).Infof("error running /usr/share/google/safe_format_and_mount\n%s", string(dataOut))
+		glog.V(5).Infof("error running /usr/share/oem/google/safe_format_and_mount\n%s", string(dataOut))
 	}
 	return err
 }
