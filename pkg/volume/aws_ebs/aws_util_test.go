@@ -74,7 +74,7 @@ func TestSafeFormatAndMount(t *testing.T) {
 			}
 			return
 		}
-		if cmdOut != "/usr/share/google/safe_format_and_mount" {
+		if cmdOut != "/usr/share/oem/google/safe_format_and_mount" {
 			t.Errorf("unexpected command: %s", cmdOut)
 		}
 		if len(argsOut) != len(test.expectedArgs) {

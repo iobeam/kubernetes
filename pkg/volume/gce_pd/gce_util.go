@@ -342,7 +342,7 @@ type gceSafeFormatAndMount struct {
 	runner exec.Interface
 }
 
-// uses /usr/share/google/safe_format_and_mount to optionally mount, and format a disk
+// uses /usr/share/oem/google/safe_format_and_mount to optionally mount, and format a disk
 func (mounter *gceSafeFormatAndMount) Mount(source string, target string, fstype string, options []string) error {
 	// Don't attempt to format if mounting as readonly. Go straight to mounting.
 	for _, option := range options {
@@ -357,11 +357,11 @@ func (mounter *gceSafeFormatAndMount) Mount(source string, target string, fstype
 	}
 	args = append(args, options...)
 	args = append(args, source, target)
-	glog.V(5).Infof("exec-ing: /usr/share/google/safe_format_and_mount %v", args)
-	cmd := mounter.runner.Command("/usr/share/google/safe_format_and_mount", args...)
+	glog.V(5).Infof("exec-ing: /usr/share/oem/google/safe_format_and_mount %v", args)
+	cmd := mounter.runner.Command("/usr/share/oem/google/safe_format_and_mount", args...)
 	dataOut, err := cmd.CombinedOutput()
 	if err != nil {
-		glog.Errorf("error running /usr/share/google/safe_format_and_mount\n%s", string(dataOut))
+		glog.Errorf("error running /usr/share/oem/google/safe_format_and_mount\n%s", string(dataOut))
 	}
 	return err
 }
